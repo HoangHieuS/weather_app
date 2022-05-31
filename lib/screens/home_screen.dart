@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:weather_app/constants.dart';
+import 'package:weather_app/screens/screens.dart';
 import 'package:weather_app/widget/widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final Constants _constants = Constants();
   static String API_KEY = '128a99ca01964af483b93113223005';
 
-  String location = 'London';
+  String location = 'Vung Tau';
   String weatherIcon = 'heavycloud.png';
   int temperature = 0;
   int windSpeed = 0;
@@ -325,7 +325,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DetailScreen(
+                                dailyWeatherForecast: dailyWeatherForecast),
+                          ),
+                        ),
                         child: Text(
                           'Forecasts',
                           style: TextStyle(
@@ -341,7 +347,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 110,
                     child: ListView.builder(
-                      itemCount: 24,
+                      itemCount: hourlyWeatherForecast.length,
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
@@ -398,32 +404,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 'assets/$forecastWeatherIcon',
                                 width: 20,
                               ),
-                              RichText(
-                                text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: _constants.greyColor,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text: forecastTemperature,
-                                    ),
-                                    WidgetSpan(
-                                      child: Transform.translate(
-                                        offset: const Offset(0.0, -7.0),
-                                        child: Text(
-                                          'o',
-                                          style: TextStyle(
-                                            fontSize: 17,
-                                            color: _constants.greyColor,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                              SmallTemperature(
+                                textSize: 17,
+                                text: forecastTemperature,
+                                subTextSize: 17,
+                                color: _constants.greyColor,
                               ),
                             ],
                           ),

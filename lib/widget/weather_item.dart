@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class WeatherItem extends StatelessWidget {
   final int value;
-
+  
   final String unit;
   final String imageUrl;
 
@@ -11,12 +11,14 @@ class WeatherItem extends StatelessWidget {
     required this.value,
     required this.unit,
     required this.imageUrl,
+    
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+     
         Container(
           padding: const EdgeInsets.all(10),
           height: 60,
