@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/constants.dart';
 
 class SmallTemperature extends StatelessWidget {
   final double textSize;

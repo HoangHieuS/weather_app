@@ -10,7 +10,7 @@ class BigTemperature extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Constants _constants = Constants();
+    Constants constants = Constants();
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -22,7 +22,7 @@ class BigTemperature extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 80,
-              foreground: Paint()..shader = _constants.shader,
+              foreground: Paint()..shader = constants.shader,
             ),
           ),
         ),
@@ -30,7 +30,7 @@ class BigTemperature extends StatelessWidget {
           'o',
           style: TextStyle(
             fontSize: 40,
-            foreground: Paint()..shader = _constants.shader,
+            foreground: Paint()..shader = constants.shader,
           ),
         ),
       ],

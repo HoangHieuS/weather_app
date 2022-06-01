@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   static String API_KEY = '128a99ca01964af483b93113223005';
 
   String location = 'Vung Tau';
-  String weatherIcon = 'heavycloud.png';
+  String weatherIcon = 'heavycloudy.png';
   int temperature = 0;
   int windSpeed = 0;
   int humidity = 0;
@@ -241,30 +241,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 160,
                     child: Image.asset('assets/$weatherIcon'),
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          temperature.toString(),
-                          style: TextStyle(
-                            fontSize: 80,
-                            fontWeight: FontWeight.bold,
-                            foreground: Paint()..shader = _constants.shader,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        'o',
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          foreground: Paint()..shader = _constants.shader,
-                        ),
-                      ),
-                    ],
+                  BigTemperature(
+                    text: temperature.toString(),
                   ),
                   Text(
                     currentWeatherStatus,
